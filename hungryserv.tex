@@ -1,0 +1,146 @@
+\documentclass{beeper}
+
+\usepackage{fontawesome}
+\usepackage{etoolbox}
+\usepackage{textcomp}
+\usepackage[nodisplayskipstretch]{setspace}
+\usepackage{xspace}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{soul}
+\usepackage{attrib}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\usepackage[linesnumbered,commentsnumbered,ruled,vlined]{algorithm2e}
+\newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
+\SetKwComment{tcc}{ \# }{}
+\SetKwComment{tcp}{ \# }{}
+
+\usepackage{siunitx}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{decorations.pathreplacing,calc,arrows.meta,shapes,graphs}
+
+\AtBeginEnvironment{minted}{\singlespacing\fontsize{10}{10}\selectfont}
+\setmainfont{Open Sans Light}
+\usefonttheme{serif}
+
+\makeatletter
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
+\makeatother
+
+% Math stuffs
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\Inn}{\text{Inn}}
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\Ker}{\text{Ker}\ }
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+
+\newcommand{\yournewcommand}[2]{Something #1, and #2}
+
+\newenvironment{question}[1]{\par\textbf{Question #1.}\par}{}
+
+\newcommand{\pmidg}[1]{\parbox{\widthof{#1}}{#1}}
+\newcommand{\splitslide}[4]{
+    \noindent
+    \begin{minipage}{#1 \textwidth - #2 }
+        #3
+    \end{minipage}%
+    \hspace{ \dimexpr #2 * 2 \relax }%
+    \begin{minipage}{\textwidth - #1 \textwidth - #2 }
+        #4
+    \end{minipage}
+}
+
+\newcommand{\frameoutput}[1]{\frame{\colorbox{white}{#1}}}
+
+\newcommand{\tikzmark}[1]{%
+\tikz[baseline=-0.55ex,overlay,remember picture] \node[inner sep=0pt,] (#1)
+{\vphantom{T}};
+}
+
+\newcommand{\braced}[3]{%
+    \begin{tikzpicture}[overlay,remember picture]
+        \draw [thick,decorate,decoration={brace,raise=1ex,amplitude=4pt},blue] (#2.south west-|T1.south west) -- node[anchor=west,left,xshift=-1.8ex,text=olive]{#3} (#1.north west-|T1.south west);
+    \end{tikzpicture}
+}
+
+\title{Hungryserv}
+\subtitle{A Homeserver Optimized for Unfederated Use-Cases}
+\author{Sumner Evans}
+\date{27 August 2022}
+
+\begin{document}
+
+\begin{frame}{A bit about me}
+    My name is Sumner, I'm a software engineer at Beeper.
+    \begin{itemize}
+        \item I graduated from Colorado School of Mines in 2019 with a master's
+            in CS.
+        \item I teach as an adjunct professor at my alma mater.
+        \item I enjoy skiing, volleyball, and football (soccer).
+        \item I'm a 4th degree black belt in ATA taekwondo.
+    \end{itemize}
+
+    I became interested in Matrix when I was the chair of the ACM chapter at
+    Mines. I was looking for an open source chat platform for the club to use,
+    and Matrix fit the bill!
+\end{frame}
+
+\begin{frame}{Overview}
+    \setbeamertemplate{section in toc}[sections numbered]
+    \tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{A bit about Beeper}
+
+\begin{frame}{Beeper's vision}
+\end{frame}
+
+\begin{frame}{How we are getting there}
+    % focusing on DMs not group chats
+\end{frame}
+
+\section{A bit about Beeper's current architecture}
+
+\begin{frame}{We run a lot of bridges}
+\end{frame}
+
+\begin{frame}{A diagram}
+    % show an abbreviated diagram of the architecture
+\end{frame}
+
+\begin{frame}{Stats}
+    % stats about the number of puppets per actual user
+
+    None of that traffic is federated, but it has to go to Synapse which is
+    designed with federation front-and-center!
+\end{frame}
+
+\begin{frame}[standout]
+    \Large
+    Solution: build a homeserver dedicated to unfederated traffic
+\end{frame}
+
+\section{Hungryserv}
+
+\begin{frame}{Why is it hungry?}
+    \Large
+    Because it's unfed(erated)!
+\end{frame}
+
+\begin{frame}{Our new architecture}
+
+\end{frame}
+
+\end{document}
+% Local Variables:
+% TeX-command-extra-options: "-shell-escape"
+% End:
