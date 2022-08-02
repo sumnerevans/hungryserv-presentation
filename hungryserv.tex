@@ -88,29 +88,65 @@
         \item I enjoy skiing, volleyball, and football (soccer).
         \item I'm a 4th degree black belt in ATA taekwondo.
     \end{itemize}
+    \pause
 
     I became interested in Matrix when I was the chair of the ACM chapter at
     Mines. I was looking for an open source chat platform for the club to use,
     and Matrix fit the bill!
 \end{frame}
 
+\begin{frame}{What I work on at Beeper}
+    I am on the newly created \textit{Scaling} team.
+
+    Our current objective is to prepare Beeper for rocket-ship growth.
+    \pause
+
+    I was previously part of the \textit{Bridges} team. 
+
+    Notable projects include:
+    \begin{itemize}
+        \item Writing the LinkedIn bridge
+        \item Implementing massive stability improvements to the Signal bridge.
+        \item Implementing incremental infinite backfill in our WhatsApp and
+            Facebook bridges
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{Overview}
     \setbeamertemplate{section in toc}[sections numbered]
     \tableofcontents[hideallsubsections]
+
+    \pause
+    \textbf{If you have questions at any point, feel free to interrupt me.}
 \end{frame}
 
 \section{A bit about Beeper}
 
-\begin{frame}{Beeper's vision}
+\begin{frame}{Beeper's mission}
+    Our mission is to:
+
+    \begin{quote}
+        make it easy for everyone on Earth to chat with each other.
+    \end{quote}
+    \pause
+
+    We specifically chose the word ``chat'' rather than ``communicate'' because
+    we are focusing on \textit{people talking to one another}.
 \end{frame}
 
 \begin{frame}{How we are getting there}
     % focusing on DMs not group chats
+    % bring all your chats to the same place - switch with no cost
 \end{frame}
 
 \section{A bit about Beeper's current architecture}
 
 \begin{frame}{We run a lot of bridges}
+    We encourage users to connect \textbf{all} of their chat networks.
+    Each user gets their own bridge for each network they connect.
+
+    % Advantage: don't affect other users
+    % can have different features for different sets of users
 \end{frame}
 
 \begin{frame}{A diagram}
@@ -139,6 +175,8 @@
 \begin{frame}{Our new architecture}
 
 \end{frame}
+
+% When your DAG is a linked list, don't store it as a DAG
 
 \end{document}
 % Local Variables:
