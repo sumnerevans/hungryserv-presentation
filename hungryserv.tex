@@ -75,12 +75,13 @@
 \title{Hungryserv}
 \subtitle{A Homeserver Optimized for Unfederated Use-Cases}
 \author{Sumner Evans}
-\date{27 August 2022}
+\institute{Beeper}
+\date{26 August 2022}
 
 \begin{document}
 
 \begin{frame}{A bit about me}
-    My name is Sumner, I'm a software engineer at Beeper.
+    My name is Sumner, I'm a \textbf{software engineer at Beeper}.
     \begin{itemize}
         \item I graduated from Colorado School of Mines in 2019 with a master's
             in CS.
@@ -106,7 +107,7 @@
     Notable projects include:
     \begin{itemize}
         \item Writing the LinkedIn bridge
-        \item Implementing massive stability improvements to the Signal bridge.
+        \item Implementing massive stability improvements in the Signal bridge
         \item Implementing incremental infinite backfill in our WhatsApp and
             Facebook bridges
     \end{itemize}
@@ -116,14 +117,15 @@
     \setbeamertemplate{section in toc}[sections numbered]
     \tableofcontents[hideallsubsections]
 
-    \pause
-    \textbf{If you have questions at any point, feel free to interrupt me.}
+    \begin{block}{This talk is interactive!}
+        If you have questions at any point, feel free to interrupt me.
+    \end{block}
 \end{frame}
 
 \section{A bit about Beeper}
 
 \begin{frame}{Beeper's mission}
-    Our mission is to:
+    Our mission is to:\\
 
     \begin{quote}
         make it easy for everyone on Earth to chat with each other.
@@ -137,20 +139,40 @@
 \begin{frame}{How we are getting there}
     % focusing on DMs not group chats
     % bring all your chats to the same place - switch with no cost
+
+    % We encourage users to connect \textbf{all} of their chat networks.
 \end{frame}
 
 \section{A bit about Beeper's current architecture}
 
-\begin{frame}{We run a lot of bridges}
-    We encourage users to connect \textbf{all} of their chat networks.
-    Each user gets their own bridge for each network they connect.
+\begin{frame}{A diagram}
+    \centerline{\includegraphics[width=1.15\textwidth]{images/current-architecture}}
 
-    % Advantage: don't affect other users
-    % can have different features for different sets of users
+    Each user gets their own bridge for each network they connect.
 \end{frame}
 
-\begin{frame}{A diagram}
-    % show an abbreviated diagram of the architecture
+\begin{frame}{Advantages of our architecture}
+    \begin{itemize}[<+->]
+        \item Each users' bridge is \textbf{isolated}
+        \item We can deploy \textbf{different bridge versions} to different sets
+            of users
+        \item Bridges can be stopped and started individually
+        \item Double puppeting
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Disadvantages of our architecture}
+    \begin{itemize}[<+->]
+        \item We have to run a \textbf{lot} of bridges
+        \item Synapse is not designed for a dynamic numbers of bridges
+        \item If two users join the same chat on an external network, we end up
+            with two rooms with the same data
+        \item Synapse becomes a bottleneck for all traffic
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Back to the diagram}
+    \centerline{\includegraphics[width=1.15\textwidth]{images/current-architecture}}
 \end{frame}
 
 \begin{frame}{Stats}
