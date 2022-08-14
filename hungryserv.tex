@@ -167,24 +167,44 @@
         \item Synapse is not designed for a dynamic numbers of bridges
         \item If two users join the same chat on an external network, we end up
             with two rooms with the same data
+        \item We run Synapse on AWS which is relatively expensive
         \item Synapse becomes a bottleneck for all traffic
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Back to the diagram}
     \centerline{\includegraphics[width=1.15\textwidth]{images/current-architecture}}
+    The core software in this architecture is Synapse.
 \end{frame}
 
 \begin{frame}{Stats}
-    % stats about the number of puppets per actual user
+    % TODO: stats about the number of puppets per actual user
 
     None of that traffic is federated, but it has to go to Synapse which is
     designed with federation front-and-center!
 \end{frame}
 
+\begin{frame}{A few more notes}
+    \begin{itemize}[<+->]
+        \item \textbf{Synapse is aggressively federated}
+
+            Synapse has no special handling of federated vs unfederated rooms.
+
+        \item \textbf{Synapse does not handle message floods well}
+
+            Synapse falls over when users bridge some large Telegram chats and
+            Discord servers.
+
+        \item \textbf{Deleting rooms from Synapse is hard}
+
+            We end up with lots of \textit{dead} rooms when users delete their
+            bridges and never turn it back on (or need a hard bridge reset).
+    \end{itemize}
+\end{frame}
+
 \begin{frame}[standout]
     \Large
-    Solution: build a homeserver dedicated to unfederated traffic
+    Solution: build a homeserver optimized for unfederated bridge traffic
 \end{frame}
 
 \section{Hungryserv}
@@ -195,7 +215,11 @@
 \end{frame}
 
 \begin{frame}{Our new architecture}
+    \centerline{\includegraphics[width=1.15\textwidth]{images/new-architecture}}
+\end{frame}
 
+\begin{frame}{Why unfederated?}
+    Each bridge belongs to a single user, so federation is unnecessary.
 \end{frame}
 
 % When your DAG is a linked list, don't store it as a DAG
