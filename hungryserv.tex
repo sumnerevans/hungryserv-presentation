@@ -211,7 +211,7 @@
 
 \begin{frame}{Why is it hungry?}
     \Large
-    Because it's unfed(erated)!
+    Because it's unfed\pause{erated!}
 \end{frame}
 
 \begin{frame}{Our new architecture}
@@ -219,10 +219,27 @@
 \end{frame}
 
 \begin{frame}{Why unfederated?}
-    Each bridge belongs to a single user, so federation is unnecessary.
+    Each bridge belongs to a single user, so federation is unnecessary. \\
+    \pause
+
+    \begin{quote}
+        When your DAG is a linked-list, don't store it as a DAG.
+    \end{quote}
+    \pause
+
+    Being unfederated means that we can avoid implementing many of the event
+    auth rules.
+    \begin{itemize}
+        \item Event storage requires less metadata
+        \item Deletions can be optimized
+        \item Infinite backfill becomes an simple batch SQL operation
+    \end{itemize}
 \end{frame}
 
-% When your DAG is a linked list, don't store it as a DAG
+\begin{frame}[standout]
+    \Large
+    Demo!
+\end{frame}
 
 \end{document}
 % Local Variables:
