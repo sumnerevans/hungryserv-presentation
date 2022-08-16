@@ -2,6 +2,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{beeper}[2020/07/21]
 
+\DeclareOption{handout}{\PassOptionsToClass{\CurrentOption}{beamer}} 
+\ProcessOptions\relax
 \LoadClass{beamer}
 
 \usetheme[numbering=none,

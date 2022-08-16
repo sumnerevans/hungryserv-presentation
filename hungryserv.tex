@@ -178,8 +178,19 @@
 \end{frame}
 
 \begin{frame}{Stats}
-    % TODO: stats about the number of puppets per actual user
+    Because we encourage users to connect every chat network, we have a lot of
+    puppet users.
 
+    \textbf{\large On average, each user brings 4716 puppeted users.}
+    \pause
+
+    All of these puppets represent real people on other networks, so they
+    each generate their own traffic.
+
+    \textbf{\large On average, each user and their puppets collectively account
+        for 100k events!}
+
+    \pause
     None of that traffic is federated, but it has to go to Synapse which is
     designed with federation front-and-center!
 \end{frame}
@@ -236,9 +247,32 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Goals, and non-goals}
+    \textbf{Goals}
+    \begin{itemize}
+        \item Be fast
+        \item Be compatible with Beeper clients (and mostly compatible with
+            Element clients)
+        \item Be API-compatible with the Appservice API for bridges
+    \end{itemize}
+    \pause
+
+    \textbf{Non-goals}
+    \begin{itemize}
+        \item Be federated
+        \item Be fully spec compliant
+        \item Be P2P
+    \end{itemize}
+\end{frame}
+
 \begin{frame}[standout]
     \Large
     Demo!
+\end{frame}
+
+\begin{frame}[standout]
+    \Large
+    Questions?
 \end{frame}
 
 \end{document}
