@@ -1,4 +1,4 @@
-% vim ft=latex
+% vim: ft=tex
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{beeper}[2020/07/21]
 
@@ -6,9 +6,17 @@
 \ProcessOptions\relax
 \LoadClass{beamer}
 
-\usetheme[numbering=none,
-          progressbar=frametitle,
+% Define colors
+\definecolor{beeperpink}{RGB}{255, 73, 107}
+
+\usetheme[progressbar=frametitle,
           block=fill]{metropolis}
+% \setbeamercolor{altered text}{fg=red}
+% \setbeamercolor{example text}{fg=red}
+\setbeamercolor{palette primary}{bg=beeperpink}
+% \setbeamercolor{progress bar}{fg=red}
+\setbeamercolor{title separator}{fg=beeperpink}
+
 \setbeamercovered{dynamic}
 \RequirePackage{graphicx}
 

@@ -153,6 +153,7 @@
 
 \begin{frame}{Advantages of our architecture}
     \begin{itemize}[<+->]
+        \item ASMUX allows us to dynamically change what bridges are running
         \item Each users' bridge is \textbf{isolated}
         \item We can deploy \textbf{different bridge versions} to different sets
             of users
@@ -182,6 +183,7 @@
     puppet users.
 
     \textbf{\large On average, each user brings 4716 puppeted users.}
+    \vspace{0.4cm}
     \pause
 
     All of these puppets represent real people on other networks, so they
@@ -189,8 +191,9 @@
 
     \textbf{\large On average, each user and their puppets collectively account
         for 100k events!}
-
+    \vspace{0.4cm}
     \pause
+
     None of that traffic is federated, but it has to go to Synapse which is
     designed with federation front-and-center!
 \end{frame}
@@ -227,9 +230,30 @@
 
 \begin{frame}{Our new architecture}
     \centerline{\includegraphics[width=1.15\textwidth]{images/new-architecture}}
+
+    Let's talk about the differences from the old architecture\ldots
 \end{frame}
 
-\begin{frame}{Why unfederated?}
+\begin{frame}{Hungryserv}
+    We run a \textbf{Hungryserv} instance for every user to handle that user's
+    bridge traffic.
+    \pause
+
+    \begin{itemize}[<+->]
+        \item If there's a message flood from a bridge, it only affects that
+            user.
+        \item We don't have to store all of the bridge events and users in our
+            Synapse database.
+        \item Synapse is less resource constrained and can do what it does best:
+            federate with other Matrix homeservers.
+    \end{itemize}
+    \pause[\thebeamerpauses]
+
+    We are also currently looking into ways of using \textbf{SQLite} in
+    production using Litestream.
+\end{frame}
+
+\begin{frame}{Hungryserv: aggressively unfederated}
     Each bridge belongs to a single user, so federation is unnecessary. \\
     \pause
 
@@ -238,16 +262,16 @@
     \end{quote}
     \pause
 
-    Being unfederated means that we can avoid implementing many of the event
-    auth rules.
+    Being unfederated means that:
     \begin{itemize}
-        \item Event storage requires less metadata
-        \item Deletions can be optimized
-        \item Infinite backfill becomes an simple batch SQL operation
+        \item we can avoid implementing the state resolution algorithm,
+        \item event storage requires less metadata,
+        \item deletions can be optimized, and
+        \item infinite backfill becomes an simple batch SQL operation.
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Goals, and non-goals}
+\begin{frame}{Hungryserv: goals, and non-goals}
     \textbf{Goals}
     \begin{itemize}
         \item Be fast
@@ -261,8 +285,56 @@
     \begin{itemize}
         \item Be federated
         \item Be fully spec compliant
-        \item Be P2P
     \end{itemize}
+\end{frame}
+
+\begin{frame}{Our new architecture}
+    \centerline{\includegraphics[width=1.15\textwidth]{images/new-architecture}}
+
+    Let's talk about the differences from the old architecture\ldots
+\end{frame}
+
+\begin{frame}{Roomserv}
+    \textbf{Roomserv} is a service which splits client requests between Synapse
+    and Hungryserv.
+
+    Roomserv merges the responses from the two homeservers to make it appear as
+    a single homeserver to the client.
+\end{frame}
+
+\begin{frame}{Our new architecture}
+    \centerline{\includegraphics[width=1.15\textwidth]{images/new-architecture}}
+
+    Let's talk about the differences from the old architecture\ldots
+\end{frame}
+
+\begin{frame}{No more ASMUX}
+    Hungryserv natively supports dynamic registration of app services, and knows
+    how to route requests to the correct bridge.
+    \pause
+
+    \textbf{We no longer have to rely on the single transactions firehose from
+    Synapse.}
+\end{frame}
+
+\begin{frame}{Our new architecture}
+    \centerline{\includegraphics[width=1.15\textwidth]{images/new-architecture}}
+
+    Let's talk about the differences from the old architecture\ldots
+\end{frame}
+
+\begin{frame}{A multi-cloud future?}
+    The resources for each user can be moved closer to them using a multi-cloud,
+    or multi-region strategy.
+
+    This will help reduce latency (especially to bridged networks) and allow for
+    us to deploy in more flexible and cost-effective environments.
+\end{frame}
+
+\begin{frame}{Our new architecture}
+    \centerline{\includegraphics[width=1.15\textwidth]{images/new-architecture}}
+
+    Let's talk about the differences from the old architecture\ldots
 \end{frame}
 
 \begin{frame}[standout]
