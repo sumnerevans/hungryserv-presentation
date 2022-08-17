@@ -136,11 +136,42 @@
     we are focusing on \textit{people talking to one another}.
 \end{frame}
 
-\begin{frame}{How we are getting there}
-    % focusing on DMs not group chats
-    % bring all your chats to the same place - switch with no cost
+\begin{frame}{What is Beeper?}
+    \begin{center}
+        \textbf{Beeper is an app that brings all of your chat networks together into
+            a single inbox.}
+    \end{center}
+    \centerline{\includegraphics[width=0.3\textwidth]{images/beeper-mobile}}
+\end{frame}
 
-    % We encourage users to connect \textbf{all} of their chat networks.
+\begin{frame}{What is Beeper?}
+    \textbf{Beeper allows you to consolidate messages from 15+ chat apps into a
+        single inbox.}
+
+    \pause
+    \begin{itemize}
+        \item Beeper is available on on macOS, Windows, Linux iPhone, iPad,
+            Android and Chrome OS.
+        \item Beeper is built on top of the Matrix protocol.
+        \item Beeper encrypts all chats, including bridged chats, by
+            default\footnote[frame]{We have to momentarily decrypt your chat
+            messages to translate from the other network to Matrix, but we never
+            log or store your unencrypted messages.}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Bridging to a glorious Matrix future}
+    We see bridges as a way to onboard users into the Matrix ecosystem.
+
+    Users can switch to a new app without loosing a single conversation!
+    \pause
+
+    \vspace{1cm}
+    \begin{center}
+        \Large
+        \textbf{We encourage our users to connect \textit{all} of their chat
+        networks to Beeper.}
+    \end{center}
 \end{frame}
 
 \section{A bit about Beeper's current architecture}
@@ -216,10 +247,13 @@
     \end{itemize}
 \end{frame}
 
+\begingroup
+\def\insertframenumber{\relax}
 \begin{frame}[standout]
     \Large
     Solution: build a homeserver optimized for unfederated bridge traffic
 \end{frame}
+\endgroup
 
 \section{Hungryserv}
 
@@ -337,6 +371,8 @@
     Let's talk about the differences from the old architecture\ldots
 \end{frame}
 
+\begingroup
+\def\insertframenumber{\relax}
 \begin{frame}[standout]
     \Large
     Demo!
@@ -346,6 +382,7 @@
     \Large
     Questions?
 \end{frame}
+\endgroup
 
 \end{document}
 % Local Variables:
