@@ -1,5 +1,20 @@
 let
-  pkgs = import <nixpkgs> { };
+  pkgs = import <nixpkgs> {
+    # https://github.com/NixOS/nixpkgs/pull/187039
+    overlays = [
+      (self: super: {
+        biber = super.biber.overrideAttrs (old: {
+          patches = [
+            # Perl 5.36.0 compatibility: https://github.com/plk/biber/pull/411
+            (super.fetchpatch {
+              url = "https://github.com/plk/biber/commit/d9e961710074d266ad6bdf395c98868d91952088.patch";
+              sha256 = "08fx7mvq78ndnj59xv3crncih7a8201rr31367kphysz2msjbj52";
+            })
+          ];
+        });
+      })
+    ];
+  };
 
   # CoC Config
   cocConfig = pkgs.writeText "coc-settings.json" (
