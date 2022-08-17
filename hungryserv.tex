@@ -251,21 +251,38 @@
 \def\insertframenumber{\relax}
 \begin{frame}[standout]
     \Large
-    Solution: build a homeserver optimized for unfederated bridge traffic
+    Solution: shard our homeserver based on bridged vs. unbridged traffic
 \end{frame}
 \endgroup
 
-\section{Hungryserv}
+\section{Our new architecture}
 
-\begin{frame}{Why is it hungry?}
-    \Large
-    Because it's unfed\pause{erated!}
-\end{frame}
-
-\begin{frame}{Our new architecture}
+\begin{frame}{A sharded future}
     \centerline{\includegraphics[width=1.15\textwidth]{images/new-architecture}}
 
     Let's talk about the differences from the old architecture\ldots
+\end{frame}
+
+\begin{frame}{Splitting the homeserver, keeping the protocol}
+    \Large
+    \centering
+    This new architecture allows us to handle Matrix-native federated traffic
+    separately from our high-throughput unfederated bridge traffic.
+    \pause
+
+    \textbf{All while maintaining API compatibility with clients, bridges, and
+    the Matrix federation!}
+\end{frame}
+
+\begin{frame}{A sharded future}
+    \centerline{\includegraphics[width=1.15\textwidth]{images/new-architecture}}
+
+    Let's talk about the differences from the old architecture\ldots
+\end{frame}
+
+\begin{frame}{Hungryserv: why is it hungry?}
+    \Large
+    Because it's unfed\pause{erated!}
 \end{frame}
 
 \begin{frame}{Hungryserv}
@@ -322,7 +339,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Our new architecture}
+\begin{frame}{A sharded future}
     \centerline{\includegraphics[width=1.15\textwidth]{images/new-architecture}}
 
     Let's talk about the differences from the old architecture\ldots
@@ -336,7 +353,7 @@
     a single homeserver to the client.
 \end{frame}
 
-\begin{frame}{Our new architecture}
+\begin{frame}{A sharded future}
     \centerline{\includegraphics[width=1.15\textwidth]{images/new-architecture}}
 
     Let's talk about the differences from the old architecture\ldots
@@ -351,7 +368,7 @@
     Synapse.}
 \end{frame}
 
-\begin{frame}{Our new architecture}
+\begin{frame}{A sharded future}
     \centerline{\includegraphics[width=1.15\textwidth]{images/new-architecture}}
 
     Let's talk about the differences from the old architecture\ldots
@@ -365,7 +382,7 @@
     us to deploy in more flexible and cost-effective environments.
 \end{frame}
 
-\begin{frame}{Our new architecture}
+\begin{frame}{A sharded future}
     \centerline{\includegraphics[width=1.15\textwidth]{images/new-architecture}}
 
     Let's talk about the differences from the old architecture\ldots
