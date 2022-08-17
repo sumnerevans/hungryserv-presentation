@@ -7,15 +7,25 @@
 \LoadClass{beamer}
 
 % Define colors
-\definecolor{beeperpink}{RGB}{255, 73, 107}
+\definecolor{beeperorange}{RGB}{255, 155, 113}
+\definecolor{beeperlightpink}{RGB}{219, 72, 243}
+\definecolor{beeperpink}{RGB}{181, 71, 233}
+\definecolor{beeperblue}{RGB}{73, 88, 245}
 
 \usetheme[progressbar=frametitle,
           block=fill]{metropolis}
+% \setbeamercolor{normal text}{fg=beeperblue}
 % \setbeamercolor{altered text}{fg=red}
 % \setbeamercolor{example text}{fg=red}
-\setbeamercolor{palette primary}{bg=beeperpink}
-% \setbeamercolor{progress bar}{fg=red}
-\setbeamercolor{title separator}{fg=beeperpink}
+\setbeamercolor{palette primary}{bg=beeperblue}
+\setbeamercolor{progress bar}{fg=beeperlightpink}
+\setbeamercolor{title separator}{fg=beeperlightpink}
+
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{2pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{2pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1.5pt}
+\makeatother
 
 \setbeamercovered{dynamic}
 \RequirePackage{graphicx}
